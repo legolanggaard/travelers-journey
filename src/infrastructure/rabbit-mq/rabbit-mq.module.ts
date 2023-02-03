@@ -3,7 +3,6 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { RabbitMQService } from './rabbit-mq.service';
 @Module({
   imports: [
-    // todo
     ClientsModule.register([
       {
         name: 'rabbit-mq-module',
