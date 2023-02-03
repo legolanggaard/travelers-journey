@@ -4,6 +4,7 @@ import { RabbitMQService } from './rabbit-mq.service';
 import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
+    // todo
     ConfigModule.forRoot(),
     ClientsModule.register([
       {
