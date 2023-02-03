@@ -7,8 +7,6 @@ export class RabbitMQService {
     @Inject('rabbit-mq-module') private readonly client: ClientProxy,
   ) {}
   public send(pattern: string, data: any) {
-    return firstValueFrom(this.client.send(pattern, data), {
-      defaultValue: '',
-    });
+    return this.client.send(pattern, data);
   }
 }

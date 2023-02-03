@@ -12,9 +12,11 @@ export class AppController {
   @Get()
   getHello(): string {
     // noinspection JSIgnoredPromiseFromCall
-    this.rabbitMQService.send('rabbit-mq-producer', {
-      message: this.appService.getHello(),
-    });
+    this.rabbitMQService
+      .send('rabbit-mq-producer', {
+        message: this.appService.getHello(),
+      })
+      .subscribe();
     return 'Message sent to the queue!';
   }
 }
