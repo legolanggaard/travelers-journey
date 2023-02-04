@@ -8,7 +8,7 @@ async function bootstrap() {
   await basicApiApp.listen(port);
   const mqUser = process.env.CONSUMER_USERNAME;
   const mqPw = process.env.CONSUMER_PASSWORD;
-  // sd
+  // sdd
   const app = await NestFactory.createMicroservice(AppModule, {
     transport: Transport.RMQ,
     options: {
