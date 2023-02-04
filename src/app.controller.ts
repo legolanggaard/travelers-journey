@@ -17,7 +17,7 @@ export class AppController {
       .send('rabbit-mq-producer', {
         message: this.appService.getHello(),
       })
-      .toPromise();
+      .subscribe();
     return 'message sent';
   }
 }
