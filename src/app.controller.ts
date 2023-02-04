@@ -10,15 +10,4 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-
-  @MessagePattern('rabbit-mq-producer')
-  public async execute(
-    @Payload() data: any,
-    @Ctx() context: RmqContext
-  ) {
-    const channel = context.getChannelRef();
-    const orginalMessage = context.getMessage();
-    console.log('data', data);
-    channel.ack(orginalMessage);
-  }
 }
