@@ -1,13 +1,20 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Ctx, MessagePattern, Payload, RmqContext } from "@nestjs/microservices";
+import { RabbitMQService } from './infrastructure/rabbit-mq/rabbit-mq.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly appService: AppService,
+    private readonly rabbitMQService: RabbitMQService,
+  ) {}
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    // noinspection JSIgnoredPromiseFromCall
+    this.rabbitMQService.send('rabbit-mq-producer', {
+      message: this.appService.getHello(),
+    });
+    return 'Message sent to the queue!';
   }
 }
